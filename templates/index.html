@@ -151,7 +151,7 @@
             document.querySelector('form').addEventListener("submit", form_handler);
 
             var fd = new FormData(document.querySelector('form'));
-
+            fd.set("created", new Date(document.getElementById('created').value).getTime())
             var xhr = new XMLHttpRequest({ mozSystem: true });
 
             xhr.open('POST', '/predict', true);
