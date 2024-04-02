@@ -1,0 +1,25 @@
+.root{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.bg-dark{
+	background-color: #75767B;
+}
+
+
+.mt-50{
+	margin-top: 50px;
+}
+#canvas{
+    border: 2px solid black;
+}
+.card{
+    width: 40vw;
+    height: 100%;
+}
+.pridiction-box{
+    background: #fff;
+    color: black;
+     /* height: 100%; */
+}
