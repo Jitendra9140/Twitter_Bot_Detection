@@ -11,85 +11,65 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
-
 </head>
 
-<body class="bg-dark">
+<body class="bg-color">
 
-    <div class="container d-flex " style="gap: 20px;">
-        <div class="col-md-6">
+    <div class="container d-flex " style="gap: 50px;">
+        <div class="col-md-6 box  mt-50"  >
             <div class="row">
-                <div class="card mt-50">
-                    <div class="card-header" style="text-align: center">
+                <div class="card ">
+                    <div class="card-header bg-orange1" style="text-align: center">
                         <h1 class="h3">Welcome to Twitter Bot Predictor</h1>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-orange">
                         <div class="col-12" style="text-align: center">
-                            <h5>This app predicts bot account of Twitter. Try filling the details below: </h5>
+                            <h5>Want to catch a bot? Enter it's details below! </h5>
                         </div>
                         <br>
-                        <form method="post" accept-charset="utf-8" name="Modelform"
-                            class="d-flex  flex-column justify-content-center text-center">
-                            <div class="col-md-12 form-group" style="text-align: center">
-                                <label><b>Enter the username:</b> </label><br>
-                                <input class="form-control" type="text" placeholder="" id="username" name="username"
-                                    required="1">
-                            </div>
-                            <div class="col-md-12 form-group" style="text-align: center">
-                                <label><b>Enter the Tweet:</b> </label><br>
-                                <input class="form-control" type="text" placeholder="" id="Tweet" name="Tweet"
-                                    required="1">
-                            </div>
-                            <div class="col-md-12 form-group" style="text-align: center">
-                                <label><b>Enter the Hashtag:</b> </label><br>
-                                <input class="form-control" type="text" placeholder="" id="Hashtag" name="Hashtag"
-                                    required="1">
-                            </div>
-                            <div class="col-md-12 form-group" style="text-align: center">
-                                <label><b>Enter the lacation:</b> </label><br>
-                                <input class="form-control" type="text" placeholder="" id="location" name="location"
-                                    required="1">
-                            </div>
-                            <div class="col-md-12 form-group" style="text-align: center">
-                                <label><b>Enter the Created At :</b> </label><br>
-                                <input class="form-control" type="datetime-local" placeholder="" id="created"
-                                    name="created" required="1">
-                            </div>
+                        <form action="/predict" method="post" accept-charset="utf-8" name="Modelform"
+                            class="d-flex  flex-column justify-content-center text-center" id="form">
                             <div class="row">
                                 <div class="col-md-6 form-group" style="text-align: center">
-                                    <label><b>Enter the Re-Tweet count:</b> </label><br>
-                                    <input class="form-control" type="number" placeholder="" id="rtweet" name="rtweet"
-                                        required="1">
-                                </div>
-                                <div class="col-md-6 form-group" style="text-align: center">
-                                    <label><b>Enter the Mention Count:</b> </label><br>
-                                    <input class="form-control" type="number" placeholder="" id="mcount" name="mcount"
-                                        required="1">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 form-group" style="text-align: center">
-                                    <label><b>Enter the Follower Count:</b> </label><br>
-                                    <input class="form-control" type="number" placeholder="" id="fcount" name="fcount"
+                                    <label><b>Enter the Friends count:</b> </label><br>
+                                    <input class="form-control" type="number" placeholder="" id="frcount" name="Friends"
                                         required="1">
                                 </div>
                                 <div class="col-md-6 form-group" style="text-align: center">
                                     <label><b>Enter the Follower Count:</b> </label><br>
-                                    <select class="col-md-12 selectpicker form-control" name="verified" id="verified">
-                                        <option value="true">varified </option>
-                                        <option value="false">non-varified</option>
-                                    </select>
+                                    <input class="form-control" type="number" placeholder="" id="fcount"
+                                        name="Followers" required="1">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group" style="text-align: center">
+                                    <label><b>Enter the Total Tweet Count:</b> </label><br>
+                                    <input class="form-control" type="number" placeholder="" id="tcount"
+                                        name="total_tweets" required="1">
+                                </div>
+                                <div class="col-md-6 form-group" style="text-align: center">
+                                    <label><b>Enter the User mentions Count:</b> </label><br>
+                                    <input class="form-control" type="number" placeholder="" id="ucount"
+                                        name="User_mention" required="1">
                                 </div>
                             </div>
                             <div class="col-md-12 form-group" style="text-align: center">
-                                <button class="btn btn-primary form-control" onclick="send_data()">Predict
-                                    Price</button>
+                                <label><b>Enter the URL Count:</b> </label><br>
+                                <input class="form-control" type="number" placeholder="" id="urcount" name="Url"
+                                    required="1">
                             </div>
+                            <div class="col-md-12 form-group" style="text-align: center">
+                                <button class="btn btn-primary form-control" onclick="send_data()" style="background-color: #8B322C;">Predict
+                                    Bot</button>
+                            </div>
+                            <div class="col-md-12 form-group" style="text-align: center">
+                                <button class="btn btn-secondary form-control" onclick="resetForm()" style="background-color: #6420AA;">Reset Form</button>
+                            </div>
+                            
                         </form>
                         <br>
                     </div>
@@ -98,76 +78,97 @@
         </div>
         <div class="col-md-6">
             <div class=" pridiction-box row  mt-50  rounded-lg">
-                <div class="w-100 text-center bg-light " style="height:100px;">
+                <div class="w-100 text-center bg-light  output" style="height:70px;">
                     <h1 class="h1 text-center">Output</h1>
                 </div>
-                <div class="col-12  mt-50" style="text-align: center">
+                <div class="col-12  mt-50 predict" style="text-align: center">
                     <h4 class=""><span id="prediction"></span></h4>
+                    <img src=" " alt="Human Image" id="humanImage" style="display: none;">
+                    <img src="" alt="Bot Image" border="0" id="botImage" style="display: none;">
+                    <audio id="humanSound" src="../static/css/It-s a human 1.mp3"></audio>
+                    <audio id="botSound" src="../static/css/It-s a bot 4.mp3"></audio>
+
                 </div>
             </div>
         </div>
 
     </div>
+  
 
     <script>
-
-        function load_Tweeter_model() {
-            // Retrieve necessary form data
-            var username = document.getElementById('username').value;
-            var tweet = document.getElementById('Tweet').value;
-            var hashtag = document.getElementById('Hashtag').value;
-            var location = document.getElementById('location').value;
-            var created = document.getElementById('created').value;
-            var rtweet = document.getElementById('rtweet').value;
-            var mcount = document.getElementById('mcount').value;
-            var fcount = document.getElementById('fcount').value;
-            var verified = document.querySelector('#verified option:checked').value;
-
-            // Example logic to populate options based on user input
-            var models = [];
-            if (username !== '') {
-                models.push('Model1');
-            }
-            if (tweet === 'some_condition') {
-                models.push('Model2');
-            }
-            // Add more conditions as needed...
-            console.log(username)
-            // Populate the select element with the dynamically generated options
-            var selectElement = document.getElementById('select_model');
-            selectElement.innerHTML = ''; // Clear previous options
-            models.forEach(function (model) {
-                var option = document.createElement('option');
-                option.value = model;
-                option.textContent = model;
-                selectElement.appendChild(option);
-            });
-        }
-
+        
+        
         function form_handler(event) {
             event.preventDefault(); // Don't submit the form normally
         }
-        function send_data() {
-            document.querySelector('form').addEventListener("submit", form_handler);
+    function send_data() {
+        document.querySelector('form').addEventListener("submit", form_handler);
+    var form = document.getElementById('form');
 
-            var fd = new FormData(document.querySelector('form'));
-            fd.set("created", new Date(document.getElementById('created').value).getTime())
-            var xhr = new XMLHttpRequest({ mozSystem: true });
+    var formData = new FormData(form)
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/predict', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var humanSound = document.getElementById('humanSound');
+    var botSound = document.getElementById('botSound');
 
-            xhr.open('POST', '/predict', true);
-            document.getElementById('prediction').innerHTML = "Wait! Predicting Price.....";
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    document.getElementById('prediction').innerHTML = "Prediction: ₹" + xhr.responseText;
+    document.getElementById('prediction').innerHTML = "Wait! Predicting Bot.....";
+    setTimeout(function() {
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var prediction = xhr.responseText;
+                    if (prediction === "Human") {
+                        document.getElementById('prediction').innerHTML = "Prediction: " + prediction;
+                        document.getElementById('humanImage').src = "https://i.ibb.co/6rnBXzD/3d-cartoon-businessman-on-transparent-background-generative-ai-png.png";
+                        document.getElementById('humanImage').style.display = "block"; // Show human image
+                        document.getElementById('botImage').style.display = "none"; // Hide bot image
+                        botSound.pause();
+        botSound.currentTime = 0;
 
+        // Play human sound
+        humanSound.play();
+                    } else if (prediction === "Bot") {
+                        document.getElementById('prediction').innerHTML = "Prediction: " + prediction;
+                        document.getElementById('botImage').src = "https://i.ibb.co/K7HZLzh/comparing-telegram-bot-hosting-providerspng-removebg-preview.png";
+                        document.getElementById('botImage').style.display = "block"; // Show bot image
+                        document.getElementById('humanImage').style.display = "none"; // Hide human image
+                        document.getElementById('botSound').play();
+                        humanSound.pause();
+        humanSound.currentTime = 0;
+
+        // Play bot sound
+        botSound.play();
+
+                    } else {
+                        document.getElementById('prediction').innerHTML = "Failed to fetch prediction.";
+                        document.getElementById('humanImage').style.display = "block"; // Hide human image
+                        document.getElementById('botImage').style.display = "none"; // Hide bot image
+                    }
+                } else {
+                    document.getElementById('prediction').innerHTML = "Failed to fetch prediction.";
+                    document.getElementById('humanImage').style.display = "none"; // Hide human image
+                    document.getElementById('botImage').style.display = "none"; // Hide bot image
                 }
-            };
+            }
+        };
 
-            xhr.onload = function () { };
+        xhr.send(new URLSearchParams(formData));
+    }, 2000);// 2000 milliseconds (2 seconds) delay
+    
+    
+    
+    return false; // Prevent default form submission
+}
 
-            xhr.send(fd);
-        }
-    </script>
+function resetForm() {
+    document.getElementById("form").reset(); // Reset the form fields
+    document.getElementById("prediction").innerHTML = ""; // Clear the prediction output
+    document.getElementById("humanImage").style.display = "none"; // Hide human image
+    document.getElementById("botImage").style.display = "none"; // Hide bot image
+}
+    </script> -->
+    
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -3,11 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-.bg-dark{
-	background-color: #75767B;
+body{
+    background-color: #FFEC9E;
+}
+.bg-color{
+	background-color: #FFEC9E;
+}
+.bg-orange{
+    background-color: #FFBB70;
+}
+.bg-orange1{
+    background-color: #ED9455;
 }
 
-
+.card-header{
+    background-color: #ED9455;
+}
 .mt-50{
 	margin-top: 50px;
 }
@@ -21,5 +32,38 @@
 .pridiction-box{
     background: #fff;
     color: black;
-     /* height: 100%; */
+    border-radius: 15px 15px 0px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.output{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    border-bottom: black solid 1px;
+    border-radius: 15px 15px 0px 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+
+.predict{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 3;
+}
+.box{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#humanImage{
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
+}
+#botImage{
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
 }
