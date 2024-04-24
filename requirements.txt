@@ -3,5 +3,5 @@ Gunicorn
 flask_cors
 pandas
 numpy
-sklearn
+scikit-learn
 csv
