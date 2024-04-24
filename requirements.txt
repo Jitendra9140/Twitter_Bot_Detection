@@ -1,0 +1,8 @@
+flask
+Gunicorn
+flask_cors
+pandas
+pickle
+numpy
+sklearn
+csv
